@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday Mrunal</title>
+
+  <!-- Google font for beautiful birthday text -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #ffecd2 0%, #fcb69f 40%, #3a1c71 100%);
+      color: #ffffff;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1050px;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 24px;
+      padding: 24px 24px 32px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating confetti dots */
+    .bubble {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      opacity: 0.75;
+      animation: floatUp 10s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bubble:nth-child(1) { background:#ff9a9e; left:10%; animation-duration:12s; }
+    .bubble:nth-child(2) { background:#fad0c4; left:70%; animation-duration:14s; }
+    .bubble:nth-child(3) { background:#fbc2eb; left:30%; animation-duration:11s; }
+    .bubble:nth-child(4) { background:#a1c4fd; left:85%; animation-duration:16s; }
+    .bubble:nth-child(5) { background:#fccb90; left:50%; animation-duration:13s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(140%); opacity: 0; }
+      15% { opacity: 0.9; }
+      85% { opacity: 0.9; }
+      100% { transform: translateY(-140%); opacity: 0; }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .main-heading {
+      font-family: 'Pacifico', cursive;
+      font-size: 3.2rem;
+      letter-spacing: 2px;
+      color: #ffeaa7;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.9),
+                   0 0 35px rgba(255, 159, 67, 0.9);
+    }
+
+    .sub-heading {
+      margin-top: 6px;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #ffecec;
+    }
+
+    .highlight-name {
+      color: #fffb96;
+      font-weight: 700;
+    }
+
+    /* Slideshow */
+
+    .slideshow-wrapper {
+      margin-top: 18px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+      z-index: 2;
+    }
+
+    .slide {
+      display: none;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(1.2) contrast(1.05) brightness(1.08);
+      transform: scale(1.02);
+      transition: transform 1.2s ease-out;
+    }
+
+    .slide.active img {
+      transform: scale(1.06);
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 55%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.55);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Controls */
+
+    .controls {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      border: none;
+      outline: none;
+      background: linear-gradient(135deg, #ff9a9e, #fecfef);
+      color: #2d3436;
+      padding: 8px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .scene-text {
+      text-align: right;
+      font-size: 0.9rem;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .scene-text span {
+      display: block;
+      opacity: 0.9;
+    }
+
+    .scene-big {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.9;
+      z-index: 2;
+      position: relative;
+    }
+
+    @media (max-width: 600px) {
+      .main-heading {
+        font-size: 2.3rem;
+      }
+      .sub-heading {
+        font-size: 0.95rem;
+      }
+      .caption {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- floating bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <header>
+      <h1 class="main-heading">Happy Birthday Mrunal</h1>
+      <p class="sub-heading">
+        From your <strong>crazy</strong> brother who loves you more than all these photos 💜
+      </p>
+    </header>
+
+    <!-- Slideshow -->
+    <div class="slideshow-wrapper" id="slideshow">
+
+      <div class="slide active">
+        <img src="img1.jpeg" alt="Mrunal birthday 1">
+        <div class="caption">Day one to forever – you & me</div>
+      </div>
+
+      <div class="slide">
+        <img src="img2.jpeg" alt="Mrunal birthday 2">
+        <div class="caption">Our laugh is my favourite sound</div>
+      </div>
+
+      <div class="slide">
+        <img src="img3.jpeg" alt="Mrunal birthday 3">
+        <div class="caption">Partners in crime since childhood</div>
+      </div>
+
+      <div class="slide">
+        <img src="img4.jpeg" alt="Mrunal birthday 4">
+        <div class="caption">Every festival is better with you</div>
+      </div>
+
+      <div class="slide">
+        <img src="img5.jpeg" alt="Mrunal birthday 5">
+        <div class="caption">Strongest, cutest, bravest girl I know</div>
+      </div>
+
+      <div class="slide">
+        <img src="img6.jpeg" alt="Mrunal birthday 6">
+        <div class="caption">Thank you for always standing with me</div>
+      </div>
+
+      <div class="slide">
+        <img src="img7.jpeg" alt="Mrunal birthday 7">
+        <div class="caption">More memories. More smiles. More chaos.</div>
+      </div>
+
+      <div class="slide">
+        <img src="img8.jpeg" alt="Mrunal birthday 8">
+        <div class="caption">You deserve all the happiness</div>
+      </div>
+
+      <div class="slide">
+        <img src="img9.jpeg" alt="Mrunal birthday 9">
+        <div class="caption">Today is all about you!</div>
+      </div>
+
+      <div class="slide">
+        <img src="img10.jpeg" alt="Mrunal birthday 10">
+        <div class="caption">Happy Birthday, Mrunal 💛</div>
+      </div>
+
+    </div>
+
+    <!-- Controls & scene text -->
+    <div class="controls">
+      <div>
+        <button class="btn" id="prevBtn">◀ Prev</button>
+        <button class="btn" id="nextBtn">Next ▶</button>
+        <button class="btn" id="muteBtn">🔊 Music</button>
+      </div>
+
+      <div class="scene-text" id="sceneText">
+        <span class="scene-big">Scene 1 • Childhood vibes</span>
+        <span>Wait for the surprises coming next…</span>
+      </div>
+    </div>
+
+    <footer>
+      Dear <span class="highlight-name">Mrunal</span>, may your year be full of peace, success, and endless laughter.  
+      Thank you for being my favourite human.
+    </footer>
+
+    <!-- Background music -->
+    <audio id="bgMusic" src="birthday-song.mp3" loop></audio>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const sceneText = document.getElementById('sceneText');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    const music = document.getElementById('bgMusic');
+
+    const scenes = [
+      'Scene 1 • Childhood vibes',
+      'Scene 2 • Fair‑ground madness',
+      'Scene 3 • Festival feels',
+      'Scene 4 • Nightout crew',
+      'Scene 5 • My strong little sister',
+      'Scene 6 • Forever support system',
+      'Scene 7 • Our inside jokes',
+      'Scene 8 • Favourite selfie partner',
+      'Scene 9 • Party time',
+      'Final Scene • Happy Birthday Queen'
+    ];
+
+    let currentIndex = 0;
+    let playing = true;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        slide.style.display = i === index ? 'block' : 'none';
+      });
+
+      sceneText.innerHTML =
+        '<span class="scene-big">' + scenes[index] + '</span>' +
+        '<span>Swipe with buttons & keep the music on.</span>';
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    let autoPlay = setInterval(nextSlide, 4500); // 4.5s per slide
+
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      restartAutoPlay();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      restartAutoPlay();
+    });
+
+    function restartAutoPlay() {
+      clearInterval(autoPlay);
+      autoPlay = setInterval(nextSlide, 4500);
+    }
+
+    // Music control
+    muteBtn.addEventListener('click', () => {
+      if (music.paused) {
+        music.play().catch(() => {});
+        muteBtn.textContent = '🔊 Music';
+      } else {
+        music.pause();
+        muteBtn.textContent = '🔈 Muted';
+      }
+    });
+
+    // Try to start music after user interaction
+    window.addEventListener('load', () => {
+      showSlide(0);
+      // Many browsers block autoplay; first click on page will start music.
+      document.body.addEventListener('click', startMusicOnce, { once: true });
+    });
+
+    function startMusicOnce() {
+      music.play().catch(() => {});
+    }
+  </script>
+</body>
+
+</html>
